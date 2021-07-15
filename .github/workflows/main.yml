@@ -58,7 +58,7 @@ jobs:
       - name: Build Flutter web
         run: |
           flutter build web --release
-          mv ./build/web .
+          mv ./build/web web_deploy
           
       
       # 빌드된 결과 파일들을 aws S3에 배포하겠습니다.
@@ -75,4 +75,4 @@ jobs:
       # deploywebsite라는 이름의 S3버켓에 올리는 명령어 입니다.
       - name: Upload to S3
         run: |
-          aws s3 cp --region ap-northeast-2 web s3://deploywebsite/ --recursive
+          aws s3 cp --region ap-northeast-2 web_deploy s3://deploywebsite/ --recursive
